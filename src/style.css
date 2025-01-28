@@ -13,6 +13,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+body {
+    /* position: relative; */
+}
+
 .board {display: grid; grid-template-columns: repeat(2,100px);}
         .cell {width: 100px; height: 100px; text-align: center; line-height: 100px; border: 1px solid black; font-size: 24px;}
         .video-background {
@@ -84,14 +88,83 @@
 }
 
 .desc {
-    height: 450px;
-    width: 50%;
-    background-color: rgb(7, 28, 87);
-    background: transparent;
+height: 450px;
+width: 50%;
+background: rgba(255, 255, 255, 0.2);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(5px);
+-webkit-backdrop-filter: blur(5px);
+border: 1px solid rgba(255, 255, 255, 0.3);
 }
-
+.con {
+    width: auto;
+    height: auto;
+}
 .desc p {
     font-size: 20px;
     text-align: center;
     color: white;
+}
+
+.main-con-room-form {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.2);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(5px);
+-webkit-backdrop-filter: blur(5px);
+display: flex;
+flex-direction: column;
+transition: all 0.5s ease-in-out;
+}
+
+
+.room-form-name {
+    width: 100%;
+    /* background-color: #242424; */
+    height: 20%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.x {
+    background-color: rgba(122, 19, 218, 0.671);
+    height: 70px;
+    width: 70px;
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.x1 {
+    height: 4px;
+    width: 41px;
+    background-color: rgb(97, 9, 9);
+    margin: 3px;
+    transform: rotate(45deg);
+}
+
+.x2 {
+    height: 4px;
+    width: 42px;
+    background-color: rgb(85, 70, 70);
+    transform: rotate(-45deg);
+}
+
+.create-room-form-con {
+    width:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60%;
 }
