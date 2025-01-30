@@ -2,7 +2,7 @@ import "./style.css"
 import "animate.css"
 import {io,Socket} from "socket.io-client";
 
-const socket:Socket  = io("http://localhost:8001/");
+// const socket:Socket  = io("http://localhost:8001/");
 
 
 
@@ -13,24 +13,27 @@ const closeXbtn = document.querySelector(".x") as HTMLDivElement;
 let text = ` Hey there,this is just a greeting from the creator AKA Madara,
         this is an online platform where visitor(anybody on the site currently) create or join a room to play or participate as a spectator in a Tic-Tac-Toe game ,adding comments or suggest which would be coming in later features,other features may include betting with users or participants,but for now lets first see if the site might be something in the later future,please do well to enjoy the game,
         Best regards from the creator,@Madara.`;
-descText.textContent = text;
-btnCreateRoom?.addEventListener("click",() => {
-    (document.querySelector(".main-con-room-form") as HTMLDivElement).style.display = "flex";
-})
-
+        btnCreateRoom?.addEventListener("click",() => {
+            (document.querySelector(".main-con-room-form") as HTMLDivElement).style.display = "flex";
+        })
+        
 closeXbtn.addEventListener("click",() => {
     (document.querySelector(".main-con-room-form") as HTMLDivElement).style.display = "none";
 })
 
-function animateWordSlice():void {
-    // let e = 0;
-    // while (e != text.length) {
-    //         descText.textContent = text.slice(0,e);
-    //       e++
-    // }
+function animateWordSlice(str:string):void {
+    let i = 0;
+    let timer = setInterval(() => {
+     if(i < str.length) {
+       descText.textContent += str.charAt(i);
+       i++
+     }else {
+        clearInterval(timer)
+     }
+    },100)
 }
 
 window.onload = () => {
     (document.querySelector(".main-con-room-form") as HTMLDivElement).style.display = "none";
-    animateWordSlice();
+    animateWordSlice(text);
 }
