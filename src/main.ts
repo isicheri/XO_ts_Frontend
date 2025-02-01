@@ -15,6 +15,8 @@ let text = ` Hey there,this is just a greeting from the creator AKA Madara,
         Best regards from the creator,@Madara.`;
         btnCreateRoom?.addEventListener("click",() => {
             (document.querySelector(".main-con-room-form") as HTMLDivElement).style.display = "flex";
+            (document.querySelector(".create-room-form-con") as HTMLDivElement).style.display ="flex";
+            (document.querySelector(".join-room-form-con") as HTMLDivElement).style.display = "none";
         })
         
 closeXbtn.addEventListener("click",() => {
@@ -32,6 +34,12 @@ function animateWordSlice(str:string):void {
      }
     },100)
 }
+
+btnJoinRoom?.addEventListener("click",() => {
+    (document.querySelector(".main-con-room-form") as HTMLDivElement).style.display = "flex";
+    (document.querySelector(".create-room-form-con") as HTMLDivElement).style.display ="none";
+    (document.querySelector(".join-room-form-con") as HTMLDivElement).style.display = "flex";
+});
 
 window.onload = () => {
     (document.querySelector(".main-con-room-form") as HTMLDivElement).style.display = "none";

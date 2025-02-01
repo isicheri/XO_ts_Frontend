@@ -36,10 +36,11 @@ body {
 }
 #message {
  color: blueviolet;
+ font-size: auto;
 }
 .msg-holder{
     background-color: rgb(7, 28, 87);
-    height: 70px;
+    height: auto;
     width: 40%;
     border-radius: 5px;
     display: flex;
@@ -55,6 +56,7 @@ body {
     padding: 7px;
     justify-content: space-between;
     align-items: center;
+    /* background-color: black; */
 }
 
 .btn-holder {
@@ -63,11 +65,12 @@ body {
     display: flex;
    justify-content: center;
    align-items: center;
+   /* background-color: blue; */
 }
 
 .btn-holder button {
     height: 60px;
-    width: 30%;
+    width: 50%;
     background-color: rgb(7, 28, 87);
     border: 1px solid blueviolet;
     border-radius: 5px;
@@ -88,7 +91,7 @@ body {
 }
 
 .desc {
-height: 450px;
+height: auto;
 width: 50%;
 background: rgba(255, 255, 255, 0.2);
 border-radius: 16px;
@@ -102,7 +105,7 @@ border: 1px solid rgba(255, 255, 255, 0.3);
     height: auto;
 }
 .desc p {
-    font-size: 20px;
+    font-size: 23px;
     text-align: center;
     color: white;
 }
@@ -122,6 +125,8 @@ backdrop-filter: blur(5px);
 -webkit-backdrop-filter: blur(5px);
 display: flex;
 flex-direction: column;
+justify-content: center;
+align-items: center;
 transition: all 0.5s ease-in-out;
 }
 
@@ -162,9 +167,76 @@ transition: all 0.5s ease-in-out;
 }
 
 .create-room-form-con {
-    width:100%;
+    width:80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 60%;
+    background-color:  rgb(7, 28, 87);
+    border-radius: 5px;
+} 
+
+.create-room-title {
+    width: 80%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.create-room-title p {
+    font-size: 20px;
+}
+
+#form {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#form input {
+ height: 50px;
+ width: 60%;
+ border-radius: 5px;
+ border: 3px rgb(100, 56, 150) solid;
+ margin: 10px;
+ background: transparent;
+ color: white;
+ padding: 10px;
+ font-size: 20px;
+}
+
+#form input::placeholder {
+    color: white;
+}
+
+.form-btn {
+    width: 60%;
+    height: 50px;
+    background-color: rgb(100, 56, 150);
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
+}
+
+.form-btn:hover{
+background-color: transparent;
+transition: all .25s ease;
+border: 2px solid rgb(100, 56, 150);
+border-radius: 4px;
+}
+
+.join-room-form-con {
+    width:80%;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 60%;
+    background-color:  rgb(7, 28, 87);
+    border-radius: 5px;
+    flex-direction: column;
 }
