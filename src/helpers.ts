@@ -1,8 +1,4 @@
 let currentPlayer: string;
-let pminElement = document.querySelector('.time-min') as HTMLParagraphElement;
-let psecElement = document.querySelector(".time-sec") as HTMLParagraphElement;
-
-
 //ill use this when im connected to the backend
 // export function generateBoardCell(boardElement: HTMLDivElement) {
 //  for (let row = 0; row < 3; row++) {
@@ -14,10 +10,9 @@ let psecElement = document.querySelector(".time-sec") as HTMLParagraphElement;
 //    }
 //  }
 // }
-
- function startGame(sec:number,min: number) {
+ function startGame(sec:number,min: number,pminElement:HTMLParagraphElement,psecElement:HTMLParagraphElement) {
     let timer = setInterval(() => {
-        pminElement.textContent = min < 10 ? `0${min}` : `${min}`;
+        pminElement.textContent = `${min}`;
         psecElement.textContent = sec < 10 ? `0${sec}` : `${sec}`;
         sec -= 1;
         if (sec == 0) {
@@ -32,8 +27,8 @@ let psecElement = document.querySelector(".time-sec") as HTMLParagraphElement;
 
 }
 
-export function generateBoardCell(boardElement:HTMLDivElement) {
-    startGame(59,1)
+export function generateBoardCell(boardElement:HTMLDivElement,pminElement:HTMLParagraphElement,psecElement:HTMLParagraphElement) {
+    startGame(59,1,pminElement,psecElement)
      for (let row = 0; row < 3; row++) {
    for (let col = 0; col < 3; col++) {
      const cell = document.createElement("div")
@@ -104,4 +99,19 @@ function checkWinner(row:number,col:number) {
     return true;
   } 
   return false;
+}
+
+
+
+
+export function animateWordSlice(str:string,descText:HTMLParagraphElement):void {
+    let i = 0;
+    let timer = setInterval(() => {
+     if(i < str.length) {
+       descText.textContent += str.charAt(i);
+       i++
+     }else {
+        clearInterval(timer)
+     }
+    },100)
 }

@@ -96,7 +96,6 @@ body {
 
 .time-holder p {
     font-size: 25px;
-    
 }
 
 .btn-holder button {
@@ -270,4 +269,29 @@ border-radius: 4px;
     background-color:  rgb(7, 28, 87);
     border-radius: 5px;
     flex-direction: column;
+}
+
+
+@media screen and (max-width: 750px) {
+    .msg-holder {
+        height: 70px;
+    }
+    #message {
+        font-size: 20px;
+    }
+    .desc {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .msg-holder {
+        height: 65px;
+    }
+    #message {
+        font-size: 17px;
+    }
+    .desc p {
+        font-size: 18px;
+    }
 }
