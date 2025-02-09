@@ -1,8 +1,10 @@
 import "./css/style.css"
 import "animate.css"
-import { generateBoardCell,animateWordSlice } from "./helpers";
+import { generateBoardCell,animateWordSlice, resetScore } from "./helpers";
 const btnCreateRoom = document.querySelector(".btn-create-room") as HTMLButtonElement;
 const btnJoinRoom = document.querySelector(".btn-join-room") as HTMLButtonElement;
+const endGameBtn = document.querySelector(".endbtn") as HTMLButtonElement;
+const restartGameBtn = document.querySelector(".restartbtn") as HTMLButtonElement;
 const descText = document.querySelector(".desc-text") as HTMLParagraphElement;
 const closeXbtn = document.querySelector(".x") as HTMLDivElement;
 const mainConRoom =document.querySelector(".main-con-room-form") as HTMLDivElement
@@ -14,28 +16,42 @@ let psecElement = document.querySelector(".time-sec") as HTMLParagraphElement;
 window.onload = () => {
     mainConRoom.style.display = "none";
     animateWordSlice(text,descText);
-btnCreateRoom?.addEventListener("click",() => {
-            (document.querySelector(".main-con-room-form") as HTMLDivElement).style.display = "flex";
-            (document.querySelector(".create-room-form-con") as HTMLDivElement).style.display ="flex";
-            (document.querySelector(".join-room-form-con") as HTMLDivElement).style.display = "none";
-})
-document.querySelectorAll("#form").forEach((form) => {
-form.addEventListener("submit",(e) => {
-    e.preventDefault()
-})
-})
-closeXbtn?.addEventListener("click",() => {
-    (document.querySelector(".main-con-room-form") as HTMLDivElement).style.display = "none";
-})
-
-btnJoinRoom?.addEventListener("click",() => {
-    (document.querySelector(".main-con-room-form") as HTMLDivElement).style.display = "flex";
-    (document.querySelector(".create-room-form-con") as HTMLDivElement).style.display ="none";
-    (document.querySelector(".join-room-form-con") as HTMLDivElement).style.display = "flex";
-    (document.querySelector("#join-change-path") as HTMLButtonElement).addEventListener("click",() => {
-        window.location.pathname = "/room";
+    btnCreateRoom?.addEventListener("click",() => {
+        (document.querySelector(".main-con-room-form") as HTMLDivElement).style.display = "flex";
+        (document.querySelector(".create-room-form-con") as HTMLDivElement).style.display ="flex";
+        (document.querySelector(".join-room-form-con") as HTMLDivElement).style.display = "none";
     })
-});
+    document.querySelectorAll("#form").forEach((form) => {
+        form.addEventListener("submit",(e) => {
+            e.preventDefault()
+        })
+    })
+    closeXbtn?.addEventListener("click",() => {
+        (document.querySelector(".main-con-room-form") as HTMLDivElement).style.display = "none";
+    })
+    
+    btnJoinRoom?.addEventListener("click",() => {
+        (document.querySelector(".main-con-room-form") as HTMLDivElement).style.display = "flex";
+        (document.querySelector(".create-room-form-con") as HTMLDivElement).style.display ="none";
+        (document.querySelector(".join-room-form-con") as HTMLDivElement).style.display = "flex";
+        (document.querySelector("#join-change-path") as HTMLButtonElement).addEventListener("click",() => {
+            window.location.pathname = "/room";
+        })
+    });
 }
+endGameBtn.addEventListener("click",() => {
+    (document.querySelector(".notify-msg-con") as HTMLParagraphElement).textContent = `
+    Game Has Been Concluded;
+    `;
+    setTimeout(() => {
+        window.location.reload();
+        window.location.pathname = "/";
+    },3000)
+})
+restartGameBtn.addEventListener("click",() => {
+    (document.querySelector(".notity_con") as HTMLDivElement).style.display = "none";
+    resetScore();
+})
 generateBoardCell(board,pminElement,psecElement);
 // window.addEventListener("beforeunload",(e) => {})
+(document.querySelector(".notity_con") as HTMLDivElement).style.display = "none";

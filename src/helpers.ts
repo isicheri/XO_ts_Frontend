@@ -1,16 +1,13 @@
-let currentPlayer: string;
-//ill use this when im connected to the backend
-// export function generateBoardCell(boardElement: HTMLDivElement) {
-//  for (let row = 0; row < 3; row++) {
-//    for (let col = 0; col < 3; col++) {
-//      const cell = document.createElement("div")
-//      cell.classList.add("cell")
-//     cell.addEventListener("click",() => makeMove(row,col))
-//     boardElement.appendChild(cell);
-//    }
-//  }
-// }
- function startGame(sec:number,min: number,pminElement:HTMLParagraphElement,psecElement:HTMLParagraphElement) {
+let currentPlayer: string = "X";
+let player_X_score:number = 0;
+let player_O_score:number = 0;
+let board:(string | null)[][] =  [
+  [null,null,null],
+  [null,null,null],
+  [null,null,null],
+]
+
+ function startTimer(sec:number,min: number,pminElement:HTMLParagraphElement,psecElement:HTMLParagraphElement) {
     let timer = setInterval(() => {
         pminElement.textContent = `${min}`;
         psecElement.textContent = sec < 10 ? `0${sec}` : `${sec}`;
@@ -18,17 +15,17 @@ let currentPlayer: string;
         if (sec == 0) {
             min -= 1;
             sec = 59;
+            console.log(min)
         }
-        if (min == 0 && sec == 0) {
-            clearInterval(timer);  
-            console.log("Game over, no winner");
-        }
+       if(min == 0 && sec == 0) {
+        clearInterval(timer);
+        console.log("Time is up!");
+       }
     }, 1000);
-
 }
 
 export function generateBoardCell(boardElement:HTMLDivElement,pminElement:HTMLParagraphElement,psecElement:HTMLParagraphElement) {
-    startGame(59,1,pminElement,psecElement)
+    startTimer(59,1,pminElement,psecElement)
      for (let row = 0; row < 3; row++) {
    for (let col = 0; col < 3; col++) {
      const cell = document.createElement("div")
@@ -41,36 +38,51 @@ export function generateBoardCell(boardElement:HTMLDivElement,pminElement:HTMLPa
  }
 }
 
-let board:(string | null)[][] =  [
-    [null,null,null],
-    [null,null,null],
-    [null,null,null],
-]
-
-
 function checkMove(row: number,col:number,cell:HTMLDivElement):void {
 if(board[row][col]) return;
-currentPlayer = currentPlayer === "X" ? "O" : "X"
-if(board[row][col] === null) {
     board[row][col] = currentPlayer;
     cell.textContent = currentPlayer;
     if(checkWinner(row,col)) {
+      if(currentPlayer === "X") {
+        player_X_score += 1;
+      }else {
+        player_O_score += 1;
+      }
         console.log(`${currentPlayer} wins!`);
+        checkScore(player_X_score,player_O_score);
         resetBoard();
         return;
     }
-}
+
 let empty_filled = board.flat().every((element) => element !== "" && element !== null);
 if(empty_filled) {
   console.log("it is a draw")  
   resetBoard();
   return
 }
+currentPlayer = currentPlayer === "X" ? "O" : "X"
+}
+
+
+function checkScore(player_X_score:number,player_O_score:number) {
+if(player_X_score > player_O_score) {
+  return "PlayerX Win!";
+}else if(player_X_score < player_O_score) {
+  return "PlayerO Wins!";
+}else {
+  return "Its a draw!";
+}
+}
+
+export function updateScoreBoardUi() {}
+
+export function resetScore() {
+  player_O_score = 0;
+  player_X_score = 0;
 }
 
 
 function resetBoard() {
-    currentPlayer = "X";
     setTimeout(() => {
         board =  [
             [null,null,null],
@@ -82,6 +94,8 @@ function resetBoard() {
         })
     }, 2000)
 }
+
+
 
 
 function checkWinner(row:number,col:number) {

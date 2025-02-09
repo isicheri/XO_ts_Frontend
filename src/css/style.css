@@ -96,6 +96,7 @@ body {
 
 .time-holder p {
     font-size: 25px;
+    color: blueviolet;
 }
 
 .btn-holder button {
@@ -271,6 +272,84 @@ border-radius: 4px;
     flex-direction: column;
 }
 
+.notity_con {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.2);
+/* border-radius: 16px; */
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(5px);
+-webkit-backdrop-filter: blur(5px);
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+transition: all 0.5s ease-in-out; 
+}
+
+
+.notify {
+    width: 75%;
+    height: 350px;
+    background-color: rgb(7, 28, 87);
+    border: 2px solid rgb(100, 56, 150);
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}
+
+.notify-msg-con {
+    height: 70px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: black; */
+}
+
+.notify-msg-con p {
+    color: blueviolet;
+    font-size: 20px;
+}
+
+.score-con {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.score-con p {
+    font-size: 20px;
+    color: blueviolet;
+}
+
+.btn_notify_con {
+    background-color: blueviolet;
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.btn_notify_con button {
+    height: 50px;
+    width: 30%;
+    background-color: rgb(7, 28, 87);
+    border-radius: 5px;
+    border: none;
+    font-size: 15px;
+}
 
 @media screen and (max-width: 750px) {
     .msg-holder {
